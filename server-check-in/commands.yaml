@@ -1,0 +1,32 @@
+---
+#* Just a few example commands that we can parse and build a json payload from
+
+hostname: "/bin/hostname"
+lastboot: "/bin/who -b| awk '{print $2 '' $3}'"
+#Below are some other ways we could approach this
+
+#Option 1
+
+# common:
+#   hostname: "/bin/hostname"
+#   lastboot: "/bin/who -b| awk '{print $2 '' $3}'"
+
+# Suse:
+#    <suse related commands here>
+
+# Debian:
+#   <debian specific commands here>
+
+# RedHat:
+#   <RedHat specific commands here>
+
+# #Another possibility is to set commands like package managers, etc
+
+# Debian:
+#    package_manager: "/bin/apt"
+
+# Suse:
+#    package_manager: "/bin/zypper"
+
+# RedHat:
+#    package_manager: "/bin/zypper"
