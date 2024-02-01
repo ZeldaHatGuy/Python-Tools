@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "colored": {
+            "()": "colorlog.ColoredFormatter",
+            "format": "%(log_color)s%(asctime)s [%(levelname)s]: %(message)s%(reset)s",
+            "log_colors": {
+                "DEBUG": "purple",
+                "INFO": "blue",
+                "WARNING": "yellow",
+                "ERROR": "red",
+                "CRITICAL": "bold_red",
+                "SUCCESS": "bold_green"
+            }
+        }
+    },
+    "handlers": {
+        "stderr": {
+            "class": "logging.StreamHandler",
+            "formatter": "colored",
+            "level": "WARNING",
+            "stream": "ext://sys.stdout"
+        },
+        "stdout_info_debug": {
+            "class": "logging.StreamHandler",
+            "formatter": "colored",
+            "level": "DEBUG",
+            "stream": "ext://sys.stdout"
+        },
+        "file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "colored",
+            "level": "DEBUG",
+            "filename": "./my-app.log",
+            "maxBytes": 10000,
+            "backupCount": 3
+        }
+    },
+    "loggers": {
+        "root": {
+            "level": "DEBUG",
+            "handlers": [
+                "stderr",
+                "stdout_info_debug",
+                "file"
+            ]
+        }
+    }
+}
