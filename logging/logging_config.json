@@ -2,9 +2,9 @@
     "version": 1,
     "disable_existing_loggers": false,
     "formatters": {
-        "colored": {
+        "color-coded": {
             "()": "colorlog.ColoredFormatter",
-            "format": "%(log_color)s%(asctime)s [%(levelname)s] [Module: %(module)s(Line: %(lineno)d), Function: %(funcName)s)]: %(message)s%(reset)s",
+            "format": "%(log_color)s%(asctime)s [%(levelname)s] [Module: %(module)s(Line: %(lineno)d)]: %(message)s%(reset)s",
             "log_colors": {
                 "DEBUG": "purple",
                 "INFO": "blue",
@@ -32,21 +32,21 @@
     "handlers": {
         "stderr": {
             "class": "logging.StreamHandler",
-            "formatter": "colored",
+            "formatter": "color-coded",
             "level": "WARNING",
             "stream": "ext://sys.stdout"
         },
         "stdout_info_debug": {
             "class": "logging.StreamHandler",
-            "formatter": "colored",
+            "formatter": "color-coded",
             "level": "DEBUG",
             "stream": "ext://sys.stdout"
         },
         "file": {
             "class": "logging.handlers.RotatingFileHandler",
-            "formatter": "colored",
+            "formatter": "json",
             "level": "DEBUG",
-            "filename": "./my-app.log1",
+            "filename": "./my-app.json1",
             "maxBytes": 10000,
             "backupCount": 3
         },

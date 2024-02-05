@@ -9,9 +9,12 @@ import inspect
 
 '''
 Orginal Concept from Mcoding with a few added features such as
-Turning off/on file and stdout handlers
-Adding the Success log level
-Taking in custom config from the user
+- Turning off/on file and stdout handlers
+- Adding the Success log level
+- Taking in custom config from the user
+- Logging the function that sends the log message's calling function
+- Color coding each log level
+
 Mcoding video can be found here: https://www.youtube.com/watch?v=9L77QExPmI0
 '''
 
@@ -49,17 +52,9 @@ logging.addLevelName(SUCCESS, "SUCCESS")
 
 
     
-def success(self, message, *args, **kwargs):
-    # Get the calling function's name
-    calling_function = inspect.currentframe().f_back.f_globals.get('__name__')
+def success(self, message, *args,**kwargs):
+    self.log(SUCCESS, message, *args, **kwargs)
     
-    # Include the calling function's name in the log message
-    message_with_function = f"{calling_function}: {message}"
-    
-    # Log the message
-    self._log(SUCCESS, message_with_function, args, **kwargs)
-
-# Add the success method to the Logger class
 logging.Logger.success = success
 
     
