@@ -7,7 +7,12 @@ import datetime as dt
 import atexit
 import inspect
 
-
+'''
+Orginal Concept from Mcoding with a few added features such as
+Turning off/on file and stdout handlers
+Adding the Success log level
+Mcoding video can be found here: https://www.youtube.com/watch?v=9L77QExPmI0
+'''
 
 logger = logging.getLogger(__name__)
 
@@ -41,10 +46,8 @@ def configure_logging(stdout_enabled=True, file_enabled=True, config='logging_co
 SUCCESS = 25
 logging.addLevelName(SUCCESS, "SUCCESS")
 
-# def success(self, message, *args, **kwargs):
-#     self.log(SUCCESS, message, *args, **kwargs)
+
     
-# logging.Logger.success = success
 def success(self, message, *args, **kwargs):
     # Get the calling function's name
     calling_function = inspect.currentframe().f_back.f_globals.get('__name__')

@@ -7,6 +7,8 @@ import time
 import yaml
 import sys
 import os
+import pathlib
+
 
 #*Code to run a series of commands and parse the output to a json payload that can be sent to an API.
 #?Not sure if this will work on Windows, but.....it Might
