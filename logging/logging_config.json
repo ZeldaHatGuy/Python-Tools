@@ -4,7 +4,7 @@
     "formatters": {
         "colored": {
             "()": "colorlog.ColoredFormatter",
-            "format": "%(log_color)s%(asctime)s [%(levelname)s]: %(message)s%(reset)s",
+            "format": "%(log_color)s%(asctime)s [%(levelname)s] [Module: %(module)s(Line: %(lineno)d), Function: %(funcName)s)]: %(message)s%(reset)s",
             "log_colors": {
                 "DEBUG": "purple",
                 "INFO": "blue",
@@ -12,6 +12,20 @@
                 "ERROR": "red",
                 "CRITICAL": "bold_red",
                 "SUCCESS": "bold_green"
+            },
+            "datefmt": "%Y-%m-%d-T%H:%M:%S%z"
+        },
+        "json": {
+            "()": "myLogger.MyJSONFormatter",
+            "fmt_keys": {
+                "level": "levelname",
+                "message": "message",
+                "timestamp": "timestamp",
+                "logger": "name",
+                "module": "module",
+                "function": "funcName",
+                "line": "lineno",
+                "thread_name": "threadName"
             }
         }
     },
@@ -32,18 +46,25 @@
             "class": "logging.handlers.RotatingFileHandler",
             "formatter": "colored",
             "level": "DEBUG",
-            "filename": "./my-app.log",
+            "filename": "./my-app.log1",
             "maxBytes": 10000,
             "backupCount": 3
+        },
+        "queue_handler": {
+            "class": "logging.handlers.QueueHandler",
+            "handlers": [
+                "stderr",
+                "file"
+
+            ],
+            "respect_handler_level": true
         }
     },
     "loggers": {
         "root": {
             "level": "DEBUG",
             "handlers": [
-                "stderr",
-                "stdout_info_debug",
-                "file"
+               "queue_handler"
             ]
         }
     }
