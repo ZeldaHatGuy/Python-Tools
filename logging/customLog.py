@@ -11,6 +11,7 @@ import inspect
 Orginal Concept from Mcoding with a few added features such as
 Turning off/on file and stdout handlers
 Adding the Success log level
+Taking in custom config from the user
 Mcoding video can be found here: https://www.youtube.com/watch?v=9L77QExPmI0
 '''
 
